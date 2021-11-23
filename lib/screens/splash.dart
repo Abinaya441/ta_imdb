@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:ta_imdb/screens/home.dart';
 
 class SplashPage extends StatefulWidget {
@@ -40,7 +39,7 @@ class SplashState extends State<SplashPage> {
                 image: AssetImage("images/splash.jpg"), fit: BoxFit.cover)),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Image.asset(
                 "images/tmdb_square.png",
@@ -48,27 +47,10 @@ class SplashState extends State<SplashPage> {
                 height: 600,
               ),
               SizedBox(
-                height: 70,
+                height: 50,
               ),
-              // Card(
-              //   shape: RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.circular(10)),
-              //   color: Color.fromRGBO(246, 199, 0, 1),
-              //   child: Padding(
-              //     padding: const EdgeInsets.all(10.0),
-              //     child: Text("Internet Movie Database",
-              //         style: GoogleFonts.lato(
-              //           textStyle: TextStyle(color: Colors.black),
-              //           fontSize: 30,
-              //           fontWeight: FontWeight.bold,
-              //         )),
-              //   ),
-              // ),
-              Container(
-                //padding: const EdgeInsets.only(top: 50),
-                child: CircularProgressIndicator(
-                    strokeWidth: 10.0, color: Color.fromRGBO(1, 180, 228, 1)),
-              )
+              CircularProgressIndicator(
+                  strokeWidth: 10.0, color: Color.fromRGBO(1, 180, 228, 1)),
             ],
           ),
         ),

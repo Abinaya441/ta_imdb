@@ -19,7 +19,6 @@ class _HomePageState extends State<HomePage> {
     List1Page(),
     List2Page(),
     ProfilePage()
-    //AboutPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -31,7 +30,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      // extendBody: true,
+      // extendBodyBehindAppBar: true,
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(13, 37, 63, 1),
         elevation: 10,

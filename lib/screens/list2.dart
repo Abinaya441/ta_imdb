@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:ta_imdb/screens/detail.dart';
+import 'package:ta_imdb/screens/detail2.dart';
 
 class List2Page extends StatefulWidget {
   const List2Page({Key? key}) : super(key: key);
@@ -42,88 +42,89 @@ class _List2PageState extends State<List2Page> {
                 child: FutureBuilder(
                   builder: (context, AsyncSnapshot<List<MovieTop>> snapshot) {
                     if (snapshot.hasData) {
-                      return Padding(
-                        padding: EdgeInsets.only(left: 15, right: 15),
-                        child: ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          itemCount: snapshot.data!.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Detail1Page(
-                                            item: snapshot.data![index].id,
-                                            title: snapshot
-                                                .data![index].original_title)));
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.only(bottom: 5),
-                                child: Card(
-                                  elevation: 10,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
-                                  color: Color.fromRGBO(1, 180, 228, 1),
-                                  child: Row(
-                                    children: [
-                                      Card(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20)),
-                                        semanticContainer: true,
-                                        clipBehavior:
-                                            Clip.antiAliasWithSaveLayer,
-                                        child: Image.network(
-                                          'https://image.tmdb.org/t/p/original' +
-                                              snapshot.data![index].poster_path,
-                                          fit: BoxFit.fill,
-                                          height: 150,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Container(
-                                        width: 200,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              snapshot
-                                                  .data![index].original_title,
-                                              textAlign: TextAlign.left,
-                                              style: GoogleFonts.bebasNeue(
-                                                  color: Colors.white,
-                                                  fontSize: 20,
-                                                  fontWeight:
-                                                      FontWeight.normal),
-                                            ),
-                                            SizedBox(
-                                              height: 20,
-                                            ),
-                                            Text(
-                                              '${snapshot.data![index].vote_average} ⭐',
-                                              textAlign: TextAlign.left,
-                                              style: GoogleFonts.nunito(
-                                                  color: Colors.white,
-                                                  fontSize: 14,
-                                                  fontWeight:
-                                                      FontWeight.normal),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
+                      return ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Detail2Page(
+                                          item: snapshot.data![index].id,
+                                          title: snapshot
+                                              .data![index].original_title)));
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  bottom: 5, left: 15, right: 15),
+                              child: Stack(
+                                alignment: AlignmentDirectional.center,
+                                children: [
+                                  Card(
+                                    elevation: 10,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    semanticContainer: true,
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    child: Image.network(
+                                      'https://image.tmdb.org/t/p/original' +
+                                          snapshot.data![index].backdrop_path,
+                                      fit: BoxFit.fill,
+                                      height: 180,
+                                      width: 300,
+                                    ),
                                   ),
-                                ),
+                                  Container(
+                                    height: 180,
+                                    width: 300,
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    decoration: new BoxDecoration(
+                                        color: Colors.black.withOpacity(0.5),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            snapshot
+                                                .data![index].original_title,
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.bebasNeue(
+                                                color: Colors.white,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.normal),
+                                          ),
+                                          SizedBox(
+                                            height: 20,
+                                          ),
+                                          Text(
+                                            '${snapshot.data![index].vote_average} ⭐',
+                                            textAlign: TextAlign.center,
+                                            style: GoogleFonts.bebasNeue(
+                                                color: Colors.white,
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.normal),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            );
-                          },
-                        ),
+                            ),
+                          );
+                        },
                       );
+                      //);
                     } else if (snapshot.hasError) {
                       return const Center(
                         child: Text('Something wrong'),
@@ -143,6 +144,7 @@ class _List2PageState extends State<List2Page> {
 class MovieTop {
   final int id;
   final String original_title;
+  final String backdrop_path;
   final String poster_path;
   final String overview;
   final num vote_average;
@@ -150,6 +152,7 @@ class MovieTop {
   MovieTop({
     required this.id,
     required this.original_title,
+    required this.backdrop_path,
     required this.poster_path,
     required this.overview,
     required this.vote_average,
@@ -159,6 +162,7 @@ class MovieTop {
     return MovieTop(
       id: json['id'],
       original_title: json['original_title'],
+      backdrop_path: json['backdrop_path'],
       poster_path: json['poster_path'],
       overview: json['overview'],
       vote_average: json['vote_average'],

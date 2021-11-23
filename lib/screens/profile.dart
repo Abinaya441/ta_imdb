@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -48,12 +46,12 @@ class _ProfilePageState extends State<ProfilePage> {
               Text(
                 'Powered By',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.quicksand(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
+                style: GoogleFonts.bebasNeue(
+                    fontWeight: FontWeight.normal,
+                    fontSize: 31,
                     color: Color.fromRGBO(144, 206, 161, 1)),
               ),
-              SizedBox(height: 10),
+              //SizedBox(height: 10),
               SizedBox(
                 child: Image.asset("images/tmdb.png"),
                 height: 50,
