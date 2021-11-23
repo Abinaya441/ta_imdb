@@ -34,7 +34,6 @@ class _HomePageState extends State<HomePage> {
         body: Stack(
           children: [
             Scaffold(
-              extendBody: true,
               extendBodyBehindAppBar: true,
               backgroundColor: Colors.transparent,
               appBar: AppBar(

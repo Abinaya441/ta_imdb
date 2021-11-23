@@ -27,15 +27,13 @@ class _Detail1PageState extends State<Detail1Page> {
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-          leading: Container(
-            child: Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(100)),
-              elevation: 3,
-              color: Color.fromRGBO(13, 37, 63, 1),
-              child: BackButton(
-                color: Color.fromRGBO(1, 180, 228, 1),
-              ),
+          leading: Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100)),
+            elevation: 3,
+            color: Colors.white,
+            child: BackButton(
+              color: Color.fromRGBO(1, 180, 228, 1),
             ),
           ),
           backgroundColor: Colors.transparent,

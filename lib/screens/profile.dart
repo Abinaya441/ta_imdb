@@ -18,7 +18,7 @@ class _ProfilePageState extends State<ProfilePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(
-                height: 20,
+                height: 80,
               ),
               Card(
                 elevation: 20,
@@ -72,7 +72,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     fontSize: 31,
                     color: Color.fromRGBO(144, 206, 161, 1)),
               ),
-              //SizedBox(height: 10),
               SizedBox(
                 child: Image.asset("images/tmdb.png"),
                 height: 50,

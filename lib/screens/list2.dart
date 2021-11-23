@@ -23,126 +23,120 @@ class _List2PageState extends State<List2Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
+      backgroundColor: Colors.white,
+      body: ListView(
+        children: [
+          Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: Text(
-                  'Top Movies of All Time',
+                  'Top Rated Movies',
+                  textAlign: TextAlign.center,
                   style: GoogleFonts.montserrat(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Color.fromRGBO(13, 37, 63, 1)),
                 ),
               ),
-              Expanded(
-                child: FutureBuilder(
-                  builder: (context, AsyncSnapshot<List<MovieTop>> snapshot) {
-                    if (snapshot.hasData) {
-                      return ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Detail2Page(
-                                          item: snapshot.data![index].id,
-                                          title: snapshot
-                                              .data![index].original_title)));
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  bottom: 5, left: 15, right: 15),
-                              child: Stack(
-                                alignment: AlignmentDirectional.center,
-                                children: [
-                                  Center(
-                                    child: Card(
-                                      elevation: 10,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20)),
-                                      semanticContainer: true,
-                                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                                      child: Image.network(
+              FutureBuilder(
+                builder: (context, AsyncSnapshot<List<MovieTop>> snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Detail2Page(
+                                        item: snapshot.data![index].id,
+                                        title: snapshot
+                                            .data![index].original_title)));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 15, right: 15, bottom: 15),
+                            child: Stack(
+                              alignment: AlignmentDirectional.center,
+                              children: [
+                                Center(
+                                  child: Card(
+                                    elevation: 10,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    semanticContainer: true,
+                                    clipBehavior: Clip.antiAlias,
+                                    child: Image.network(
                                         'https://image.tmdb.org/t/p/original' +
                                             snapshot.data![index].backdrop_path,
                                         fit: BoxFit.fill,
-                                        height: 180,
-                                        width: 300,
-                                      ),
-                                    ),
+                                        color: Color.fromRGBO(0, 0, 0, 0.5),
+                                        colorBlendMode: BlendMode.darken),
                                   ),
-                                  Container(
-                                    height: 180,
-                                    width: 300,
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    decoration: new BoxDecoration(
-                                        color: Colors.black.withOpacity(0.5),
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            snapshot
-                                                .data![index].original_title,
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.bebasNeue(
-                                                color: Colors.white,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.normal),
-                                          ),
-                                          SizedBox(
-                                            height: 20,
-                                          ),
-                                          Text(
-                                            '${snapshot.data![index].vote_average} ⭐',
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.bebasNeue(
-                                                color: Colors.white,
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.normal),
-                                          ),
-                                        ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        snapshot.data![index].original_title,
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.bebasNeue(
+                                            color: Colors.white,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.normal),
                                       ),
-                                    ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Text(
+                                        '${snapshot.data![index].vote_average} ⭐',
+                                        textAlign: TextAlign.center,
+                                        style: GoogleFonts.bebasNeue(
+                                            color: Colors.white,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.normal),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          );
-                        },
-                      );
-                      //);
-                    } else if (snapshot.hasError) {
-                      return const Center(
-                        child: Text('Something wrong'),
-                      );
-                    }
-                    return const CircularProgressIndicator(
-                      color: Colors.transparent,
+                          ),
+                        );
+                      },
                     );
-                  },
-                  future: moviesTop,
-                ),
+                  } else if (snapshot.hasError) {
+                    return const Center(
+                      child: Text('Something wrong'),
+                    );
+                  }
+                  return const CircularProgressIndicator(
+                    color: Colors.transparent,
+                  );
+                },
+                future: moviesTop,
               )
-            ]));
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
 
+//API
 class MovieTop {
   final int id;
   final String original_title;

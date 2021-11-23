@@ -26,21 +26,6 @@ class _Detail2PageState extends State<Detail2Page> {
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: true,
-        // appBar: AppBar(
-        //   leading: Container(
-        //     child: Card(
-        //       shape: RoundedRectangleBorder(
-        //           borderRadius: BorderRadius.circular(100)),
-        //       elevation: 3,
-        //       color: Color.fromRGBO(13, 37, 63, 1),
-        //       child: BackButton(
-        //         color: Color.fromRGBO(1, 180, 228, 1),
-        //       ),
-        //     ),
-        //   ),
-        //   backgroundColor: Colors.transparent,
-        //   elevation: 0,
-        // ),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: FutureBuilder<Show>(

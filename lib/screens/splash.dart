@@ -31,8 +31,6 @@ class SplashState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.black,
-      //backgroundColor: Color.fromRGBO(246, 199, 0, 1),
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
