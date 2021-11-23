@@ -29,62 +29,70 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // extendBody: true,
-      extendBodyBehindAppBar: true,
-      backgroundColor: Colors.transparent,
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(13, 37, 63, 1),
-        elevation: 10,
-        shape: const RoundedRectangleBorder(
-            borderRadius:
-                BorderRadius.vertical(bottom: Radius.elliptical(180, 50))),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(
           children: [
-            SizedBox(
-              child: Image.asset(
-                "images/tmdb_long1.png",
-                fit: BoxFit.cover,
+            Scaffold(
+              extendBody: true,
+              extendBodyBehindAppBar: true,
+              backgroundColor: Colors.transparent,
+              appBar: AppBar(
+                backgroundColor: Color.fromRGBO(13, 37, 63, 1),
+                elevation: 10,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                        bottom: Radius.elliptical(180, 50))),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      child: Image.asset(
+                        "images/tmdb_long1.png",
+                        fit: BoxFit.cover,
+                      ),
+                      height: 20,
+                    ),
+                  ],
+                ),
+                centerTitle: true,
               ),
-              height: 20,
+              body: IndexedStack(
+                children: _pages,
+                index: _selectedIndex,
+              ),
+              bottomNavigationBar: BottomNavigationBar(
+                backgroundColor: Color.fromRGBO(13, 37, 63, 1),
+                items: const <BottomNavigationBarItem>[
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home_outlined),
+                    label: 'Home',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.local_movies_outlined),
+                    label: 'Top Movies',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.person_outline),
+                    label: 'Profile',
+                  ),
+                ],
+                currentIndex: _selectedIndex,
+                unselectedItemColor: Colors.grey,
+                unselectedIconTheme: const IconThemeData(
+                    color: Color.fromRGBO(144, 206, 161, 1), size: 15),
+                unselectedFontSize: 10,
+                selectedItemColor: Color.fromRGBO(1, 180, 228, 1),
+                selectedFontSize: 15,
+                selectedIconTheme: const IconThemeData(
+                    color: Color.fromRGBO(1, 180, 228, 1), size: 25),
+                showUnselectedLabels: true,
+                selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+                onTap: _onItemTapped,
+              ),
             ),
           ],
         ),
-        centerTitle: true,
-      ),
-      body: IndexedStack(
-        children: _pages,
-        index: _selectedIndex,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromRGBO(13, 37, 63, 1),
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.local_movies_outlined),
-            label: 'Top Movies',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: 'Profile',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        unselectedItemColor: Colors.grey,
-        unselectedIconTheme: const IconThemeData(
-            color: Color.fromRGBO(144, 206, 161, 1), size: 15),
-        unselectedFontSize: 10,
-        selectedItemColor: Color.fromRGBO(1, 180, 228, 1),
-        selectedFontSize: 15,
-        selectedIconTheme: const IconThemeData(
-            color: Color.fromRGBO(1, 180, 228, 1), size: 25),
-        showUnselectedLabels: true,
-        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-        onTap: _onItemTapped,
       ),
     );
   }
