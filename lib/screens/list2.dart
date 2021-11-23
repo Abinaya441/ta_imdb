@@ -63,19 +63,21 @@ class _List2PageState extends State<List2Page> {
                               child: Stack(
                                 alignment: AlignmentDirectional.center,
                                 children: [
-                                  Card(
-                                    elevation: 10,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(20)),
-                                    semanticContainer: true,
-                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                    child: Image.network(
-                                      'https://image.tmdb.org/t/p/original' +
-                                          snapshot.data![index].backdrop_path,
-                                      fit: BoxFit.fill,
-                                      height: 180,
-                                      width: 300,
+                                  Center(
+                                    child: Card(
+                                      elevation: 10,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
+                                      semanticContainer: true,
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                                      child: Image.network(
+                                        'https://image.tmdb.org/t/p/original' +
+                                            snapshot.data![index].backdrop_path,
+                                        fit: BoxFit.fill,
+                                        height: 180,
+                                        width: 300,
+                                      ),
                                     ),
                                   ),
                                   Container(

@@ -17,30 +17,51 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: Image.asset(
-                    "images/tom.png",
-                    width: 250,
-                    height: 250,
-                  )),
-              SizedBox(height: 20),
-              Text(
-                'Muhammad Abinaya Isaqofi',
-                style: GoogleFonts.lobster(
-                    fontSize: 30,
-                    fontWeight: FontWeight.normal,
-                    color: Color.fromRGBO(13, 37, 63, 1)),
-              ),
               SizedBox(
-                height: 10,
+                height: 20,
               ),
-              Text(
-                '21120119130039',
-                style: GoogleFonts.lobster(
-                    fontSize: 25,
-                    fontWeight: FontWeight.normal,
-                    color: Color.fromRGBO(1, 180, 228, 1)),
+              Card(
+                elevation: 20,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50)),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Image.asset(
+                            "images/foto.jpg",
+                            width: 150,
+                            height: 150,
+                          )),
+                      SizedBox(height: 50),
+                      Text(
+                        'Muhammad Abinaya Isaqofi',
+                        style: GoogleFonts.lobster(
+                            fontSize: 30,
+                            fontWeight: FontWeight.normal,
+                            color: Color.fromRGBO(13, 37, 63, 1)),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        '21120119130039',
+                        style: GoogleFonts.lobster(
+                            fontSize: 25,
+                            fontWeight: FontWeight.normal,
+                            color: Color.fromRGBO(1, 180, 228, 1)),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      )
+                    ],
+                  ),
+                ),
               ),
               SizedBox(height: 125),
               Text(

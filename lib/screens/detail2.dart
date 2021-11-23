@@ -26,75 +26,114 @@ class _Detail2PageState extends State<Detail2Page> {
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
+        // appBar: AppBar(
+        //   leading: Container(
+        //     child: Card(
+        //       shape: RoundedRectangleBorder(
+        //           borderRadius: BorderRadius.circular(100)),
+        //       elevation: 3,
+        //       color: Color.fromRGBO(13, 37, 63, 1),
+        //       child: BackButton(
+        //         color: Color.fromRGBO(1, 180, 228, 1),
+        //       ),
+        //     ),
+        //   ),
+        //   backgroundColor: Colors.transparent,
+        //   elevation: 0,
+        // ),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: FutureBuilder<Show>(
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Column(
-                  children: [
-                    Image.network('https://image.tmdb.org/t/p/original' +
-                        snapshot.data!.poster_path),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Container(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Text(
-                          widget.title,
-                          style: GoogleFonts.bebasNeue(
-                              textStyle: TextStyle(
-                                  color: Color.fromRGBO(13, 37, 63, 1)),
-                              fontSize: 35),
-                          textAlign: TextAlign.center,
-                        )),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Text(
-                        snapshot.data!.tagline,
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(
-                            textStyle: TextStyle(
-                                color: Color.fromRGBO(13, 37, 63, 1),
-                                fontSize: 15)),
+                return Container(
+                  padding: EdgeInsets.all(10),
+                  child: Card(
+                    elevation: 50,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      child: Column(
+                        children: [
+                          Card(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            semanticContainer: true,
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            child: Image.network(
+                                'https://image.tmdb.org/t/p/original' +
+                                    snapshot.data!.poster_path,
+                                fit: BoxFit.fill),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                              padding:
+                                  const EdgeInsets.only(left: 20, right: 20),
+                              child: Text(
+                                widget.title,
+                                style: GoogleFonts.bebasNeue(
+                                    textStyle: TextStyle(
+                                        color: Color.fromRGBO(13, 37, 63, 1)),
+                                    fontSize: 35),
+                                textAlign: TextAlign.center,
+                              )),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            padding: const EdgeInsets.only(left: 20, right: 20),
+                            child: Text(
+                              snapshot.data!.tagline,
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.montserrat(
+                                  textStyle: TextStyle(
+                                      color: Color.fromRGBO(13, 37, 63, 1),
+                                      fontSize: 15)),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Card(
+                            elevation: 10,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100)),
+                            child: SizedBox(
+                              height: 70,
+                              width: 70,
+                              child: Center(
+                                child: Text(
+                                  '${snapshot.data!.vote_average} ⭐',
+                                  textAlign: TextAlign.justify,
+                                  style: GoogleFonts.bebasNeue(
+                                      textStyle: TextStyle(
+                                          color: Color.fromRGBO(13, 37, 63, 1),
+                                          fontSize: 20)),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 25,
+                          ),
+                          Container(
+                            padding: const EdgeInsets.only(left: 20, right: 20),
+                            child: Text(
+                              snapshot.data!.overview,
+                              textAlign: TextAlign.justify,
+                              style: GoogleFonts.montserrat(
+                                  textStyle: TextStyle(
+                                      color: Color.fromRGBO(13, 37, 63, 1))),
+                            ),
+                          ),
+                          SizedBox(height: 25),
+                        ],
                       ),
                     ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Text(
-                        '${snapshot.data!.vote_average} ⭐',
-                        textAlign: TextAlign.justify,
-                        style: GoogleFonts.montserrat(
-                            textStyle: TextStyle(
-                                color: Color.fromRGBO(13, 37, 63, 1),
-                                fontSize: 20)),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Text(
-                        snapshot.data!.overview,
-                        textAlign: TextAlign.justify,
-                        style: GoogleFonts.montserrat(
-                            textStyle: TextStyle(
-                                color: Color.fromRGBO(13, 37, 63, 1))),
-                      ),
-                    ),
-                    SizedBox(height: 25)
-                  ],
+                  ),
                 );
               } else if (snapshot.hasError) {
                 return Center(

@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       // extendBody: true,
-      // extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(13, 37, 63, 1),
