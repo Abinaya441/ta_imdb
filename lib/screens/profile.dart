@@ -15,51 +15,51 @@ class _ProfilePageState extends State<ProfilePage> {
         backgroundColor: Colors.white,
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 80,
-              ),
-              Card(
-                elevation: 20,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50)),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: Image.asset(
-                            "images/foto.jpg",
-                            width: 150,
-                            height: 150,
-                          )),
-                      SizedBox(height: 50),
-                      Text(
-                        'Muhammad Abinaya Isaqofi',
-                        style: GoogleFonts.lobster(
-                            fontSize: 30,
-                            fontWeight: FontWeight.normal,
-                            color: Color.fromRGBO(13, 37, 63, 1)),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        '21120119130039',
-                        style: GoogleFonts.lobster(
-                            fontSize: 25,
-                            fontWeight: FontWeight.normal,
-                            color: Color.fromRGBO(1, 180, 228, 1)),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      )
-                    ],
+              Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: Card(
+                  elevation: 20,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 20,
+                        ),
+                        ClipRRect(
+                            borderRadius: BorderRadius.circular(100),
+                            child: Image.asset(
+                              "images/foto.jpg",
+                              width: 150,
+                              height: 150,
+                            )),
+                        SizedBox(height: 50),
+                        Text(
+                          'Muhammad Abinaya Isaqofi',
+                          style: GoogleFonts.lobster(
+                              fontSize: 25,
+                              fontWeight: FontWeight.normal,
+                              color: Color.fromRGBO(13, 37, 63, 1)),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          '21120119130039',
+                          style: GoogleFonts.lobster(
+                              fontSize: 20,
+                              fontWeight: FontWeight.normal,
+                              color: Color.fromRGBO(1, 180, 228, 1)),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

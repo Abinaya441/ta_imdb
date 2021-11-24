@@ -42,6 +42,7 @@ class _Detail2PageState extends State<Detail2Page> {
                       child: Column(
                         children: [
                           Card(
+                            elevation: 10,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20)),
                             semanticContainer: true,
